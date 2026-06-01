@@ -5,7 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby18 -rjcode -KU
+	<string>#!/usr/bin/env ruby
 
 BUNDLE_SUPPORT = ENV['TM_BUNDLE_SUPPORT']
 SUPPORT_PATH = ENV['TM_SUPPORT_PATH']
