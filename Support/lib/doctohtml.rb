@@ -41,8 +41,10 @@ def generate_stylesheet_from_theme(theme_class = nil)
 	theme_class.gsub!(/[^a-z0-9_-]/, '_')
 	theme_class.gsub!(/_+/, '_')
 
-	font_name = `"$TM_QUERY" --setting fontName`.chomp || 'Menlo-Regular'
-	font_size = (`"$TM_QUERY" --setting fontSize`.chomp || 12).to_s
+	font_name = `"$TM_QUERY" --setting fontName 2>/dev/null`.chomp
+	font_name = 'Menlo-Regular' if font_name.empty?
+	font_size = `"$TM_QUERY" --setting fontSize 2>/dev/null`.chomp
+	font_size = '12' if font_size.empty?
 	font_size.sub! /\.\d+$/, ''
 
 	FONT_MAP.each do | font_re, font_alt |
