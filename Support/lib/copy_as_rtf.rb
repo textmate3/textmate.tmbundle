@@ -56,7 +56,7 @@ class RtfExporter
   end
   
   def generate_stylesheet_from_theme
-    require "#{ENV['TM_SUPPORT_PATH']}/lib/osx/plist"
+    require "#{ENV['TM_SUPPORT_PATH']}/private/plist"
 
     unless theme_plist = load_theme
       print "Could not locate your theme file or it may be corrupt or unparsable!"
@@ -115,7 +115,7 @@ RTF_DOC
   # }}
   
   def load_theme
-    return OSX::PropertyList.load(File.open(ENV['TM_CURRENT_THEME_PATH']))
+    return Plist.load(File.open(ENV['TM_CURRENT_THEME_PATH']))
   end
   
   def detab(str, width)

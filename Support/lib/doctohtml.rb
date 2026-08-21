@@ -13,7 +13,7 @@ FONT_MAP = {
 }
 
 def load_theme
-  return OSX::PropertyList.load(File.open(ENV['TM_CURRENT_THEME_PATH']))
+  return Plist.load(File.open(ENV['TM_CURRENT_THEME_PATH']))
 end
 
 def to_rgba(color)
@@ -27,7 +27,7 @@ end
 
 def generate_stylesheet_from_theme(theme_class = nil)
 	theme_class = '' if theme_class == nil
-	require "#{ENV['TM_SUPPORT_PATH']}/lib/osx/plist"
+	require "#{ENV['TM_SUPPORT_PATH']}/private/plist"
 
 	unless theme_plist = load_theme
 		print "Could not locate your theme file!"
