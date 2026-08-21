@@ -1,0 +1,8 @@
+#!/bin/sh
+# A stand-in for tm_query used by doctohtml_tests.rb. It reproduces the
+# behavior on a machine whose settings chain does not define the requested
+# setting: the complaint goes to stderr, nothing goes to stdout, and the
+# exit status is nonzero. Before the fix, the complaint leaked into the
+# generated HTML ahead of the doctype and the font fallback never fired.
+echo "Setting or variable '$2' not found" >&2
+exit 1
